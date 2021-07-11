@@ -14,7 +14,7 @@
 #include <stdio.h>
 #include <string.h>
 #include "tls.h"
-extern void dump_packet(unsigned char *,int);
+extern void dump_packet(void *,int);
 #define	PRIV_FILE	"cert/server.key"
 #define	CERT_FILE	"cert/server.crt"
 #define	PORT		4444	
@@ -46,7 +46,6 @@ static void tls_callback(SSL *ssl,char *ipv4,int port)
 {
 	char buff[64000];
 	int	len;
-	int	i;
 
 #ifdef DEBUG
 	printf("New Session Establieshed\n");

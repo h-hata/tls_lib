@@ -1,9 +1,10 @@
 OBJ=dump.o tls.o 
+LOPT=-L /usr/local/XXX
+IOPT=-I /usr/local/YYY
 all: tlsrv
 tlsrv: $(OBJ) tlsrv.c
-	gcc -o tlsrv $(OBJ) tlsrv.c -lpthread -lssl -lcrypto
+	gcc $(LOPT) -Wall -o tlsrv $(OBJ) tlsrv.c -lpthread -lssl -lcrypto
 .c.o:
-	gcc -o $*.o -Wall -DDEBUG -c $<
-#	gcc -Wall  -c $<
+	gcc $(IOPT) -Wall -o $*.o -Wall -DDEBUG -c $<
 clean:
 	rm -f $(OBJ) tlsrv  a.out tags
